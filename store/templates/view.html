@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <title>Products</title>
+    <style>
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding-bottom: 2rem; 
+            padding-top: 2rem;
+            border: 1px solid #1111;
+            width: 23%;            
+}
+    </style>
+</head>
+<body>
+    <div class="container mt-5"></div>
+    <h1 class="text-center alert alert-warning"> Products Avaliable </h1>
+    </div>
+    <br>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {%for i in user %}
+            <tr>
+                  <td>{{i.name}}</td> 
+                  <td>{{i.category}}</td> 
+                  <td>₹{{i.price}}</td> 
+                  <td>{{i.description}}</td> 
+                 <td><img style="height:100px;"  class="rounded-circle" src="{{i.image.url}}" alt="error" ></td>
+                  <td>
+                    <a href="{% url 'update' i.id %}"><button type="submit" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-pencil"></i> Edit</button></a>  
+                  </td>
+                  <td>
+                     <a href="/deletedata/{{ i.id }}"><button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</button></a>
+                  </td>           
+            </tr>
+            {% endfor %} 
+</body>
+</html> 
